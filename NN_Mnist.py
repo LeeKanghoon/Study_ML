@@ -57,16 +57,3 @@ for epoch_m in range(epoch):
     acc = sess.run(accuracy, feed_dict = {x: mnist.test.images, y: mnist.test.labels})
 
     print("Epoch:", '%04d' %(epoch_m + 1), "cost=", "{:.7f}".format(loss_e) , "accuracy=", "{:.3f}".format(acc))
-
-
-
-
-
-
-
-
-
-
-
-
-# ...
