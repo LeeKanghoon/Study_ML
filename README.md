@@ -6,4 +6,4 @@
 
 3 : RNN 으로 Mnist data classify (미완성)
 
-4 : VAE 로 Mnist generate 하기 ()
+4 : VAE 로 Mnist generate 하기 (미완성)
