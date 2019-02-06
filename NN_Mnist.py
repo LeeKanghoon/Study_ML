@@ -14,7 +14,7 @@ hidden_num = 100
 output_num = 10
 
 batch_size = 100
-epoch = 20
+epoch = 50
 
 # Set Neural Network Parameter
 xavier = tf.contrib.layers.xavier_initializer()
