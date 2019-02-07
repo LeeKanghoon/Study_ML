@@ -27,8 +27,9 @@ b = tf.Variable(tf.zeros(shape = [output_num]))
 lstm_cell = tf.nn.rnn_cell.LSTMCell(hidden_num, forget_bias=1.0)
 outputs, states = tf.nn.dynamic_rnn(lstm_cell, x, dtype=tf.float32)
 outputs = tf.transpose(outputs, [1, 0, 2])
+outputs = outputs[-1]
 
-y_pred = tf.nn.softmax(tf.matmul(outputs[-1], w) + b)
+y_pred = tf.nn.softmax(tf.matmul(outputs, w) + b)
 
 
 # calculate loss
