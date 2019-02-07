@@ -24,9 +24,8 @@ b = tf.Variable(tf.zeros(shape = [output_num]))
 
 # Forward
 
-x = tf.unstack(x, 28, 1)
-lstm_cell = tf.contrib.rnn.BasicLSTMCell(hidden_num, forget_bias=1.0)
-outputs, states = tf.contrib.rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
+lstm_cell = tf.nn.rnn_cell.LSTMCell(hidden_num, forget_bias=1.0)
+outputs, states = tf.nn.dynamic_rnn(lstm_cell, x, dtype=tf.float32)
 outputs = tf.transpose(outputs, [1, 0, 2])
 
 y_pred = tf.nn.softmax(tf.matmul(outputs[-1], w) + b)
