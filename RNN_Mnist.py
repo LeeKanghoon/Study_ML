@@ -29,7 +29,7 @@ w2 = tf.Variable(xavier(shape = [hidden_num, hidden_num]))
 w3 = tf.Variable(xavier(shape = [hidden_num, output_num]))
 
 b1 = tf.Variable(tf.zeros(shape = [hidden_num]))
-b2 = tf.Variable(tf.zeros(shape = [hidden_num]))
+#b2 = tf.Variable(tf.zeros(shape = [hidden_num]))
 b3 = tf.Variable(tf.zeros(shape = [output_num]))
 
 # Forward
@@ -40,7 +40,7 @@ s[-1] = np.zeros(shape = (batch_size, hidden_num), dtype = 'f')
 for i in range(len(x_split)):
     x_temp = tf.reshape(x_split[i], [batch_size, 28])
     cal1 = tf.add(tf.matmul(x_temp, w1), b1)
-    cal2 = tf.add(tf.matmul(s[i-1], w2), b2)
+    cal2 = tf.matmul(s[i-1], w2)
     s[i] = tf.nn.tanh(tf.add(cal1, cal2))
 
 y_pred = tf.nn.softmax(tf.add(tf.matmul(s[28-1],w3), b3))
@@ -64,7 +64,7 @@ s_t[-1] = np.zeros(shape = (10000, hidden_num), dtype = 'f')
 for i in range(len(x_t_split)):
     x_t_temp = tf.reshape(x_t_split[i], [10000, 28])
     cal1_t = tf.add(tf.matmul(x_t_temp, w1), b1)
-    cal2_t = tf.add(tf.matmul(s_t[i-1], w2), b2)
+    cal2_t = tf.matmul(s_t[i-1], w2)
     s_t[i] = tf.nn.tanh(tf.add(cal1_t, cal2_t))
 
 y_t_pred = tf.nn.softmax(tf.add(tf.matmul(s_t[28-1],w3), b3))
